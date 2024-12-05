@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ITENSCOMPRA."ITECOMQTD" AS ITENSCOMPRA_ITECOMQTD,
+     ITENSCOMPRA."ITECOMUNIT" AS ITENSCOMPRA_ITECOMUNIT,
+     ITENSCOMPRA."ITECOMSUBTOT" AS ITENSCOMPRA_ITECOMSUBTOT,
+     MATERIAPRIMA."MATNOME" AS MATERIAPRIMA_MATNOME
+FROM
+     "MATERIAPRIMA" MATERIAPRIMA INNER JOIN "ITENSCOMPRA" ITENSCOMPRA ON MATERIAPRIMA."MATCOD" = ITENSCOMPRA."MATCOD" and itenscompra.comcod = $P{codigo}]]>
+	</queryString>
+	<field name="ITENSCOMPRA_ITECOMQTD" class="java.lang.Double"/>
+	<field name="ITENSCOMPRA_ITECOMUNIT" class="java.math.BigDecimal"/>
+	<field name="ITENSCOMPRA_ITECOMSUBTOT" class="java.math.BigDecimal"/>
+	<field name="MATERIAPRIMA_MATNOME" class="java.lang.String"/>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="33" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ITENSCOMPRA_ITECOMQTD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ITENSCOMPRA_ITECOMUNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ITENSCOMPRA_ITECOMSUBTOT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[MATERIAPRIMA_MATNOME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="33" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ITENSCOMPRA_ITECOMQTD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ITENSCOMPRA_ITECOMUNIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ITENSCOMPRA_ITECOMSUBTOT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{MATERIAPRIMA_MATNOME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

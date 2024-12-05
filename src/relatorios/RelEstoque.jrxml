@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+    M1.MATNOME,
+    M1.MATQTDE,
+    M1.MATVALOR,
+    T1.TIPOMATFOR,
+    U1.UNITIPO
+FROM
+    MATERIAPRIMA M1,
+    TIPOMATERIA T1,
+    UNIDADEMAT U1
+WHERE
+    T1.TIPOMATCOD = M1.TIPOMATCOD AND
+    M1.UNICOD = U1.UNICOD]]>
+	</queryString>
+	<field name="MATNOME" class="java.lang.String"/>
+	<field name="MATQTDE" class="java.lang.Double"/>
+	<field name="MATVALOR" class="java.math.BigDecimal"/>
+	<field name="TIPOMATFOR" class="java.lang.String"/>
+	<field name="UNITIPO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="109" y="20" width="323" height="38"/>
+				<textElement>
+					<font fontName="Arial" size="24"/>
+				</textElement>
+				<text><![CDATA[ RELATORIO DE ESTOQUE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="46" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="41" width="74" height="20"/>
+				<textElement/>
+				<text><![CDATA[QUANTIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="41" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="41" width="78" height="20"/>
+				<textElement/>
+				<text><![CDATA[UNIDADE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="60" width="555" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{MATNOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{MATQTDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="0" width="74" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{MATVALOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="266" y="0" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{UNITIPO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

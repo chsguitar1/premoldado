@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from fornecedor order by fonome asc]]>
+	</queryString>
+	<field name="FORCOD" class="java.lang.Integer"/>
+	<field name="CIDCOD" class="java.lang.Integer"/>
+	<field name="FONOME" class="java.lang.String"/>
+	<field name="FORENDERECO" class="java.lang.String"/>
+	<field name="FORNUMERO" class="java.lang.String"/>
+	<field name="FORBAIRRO" class="java.lang.String"/>
+	<field name="FORCOMPL" class="java.lang.String"/>
+	<field name="FORCEP" class="java.lang.String"/>
+	<field name="FORTEL" class="java.lang.String"/>
+	<field name="FORCEL" class="java.lang.String"/>
+	<field name="FORFAX" class="java.lang.String"/>
+	<field name="FOREMAIL" class="java.lang.String"/>
+	<field name="FORDATA" class="java.sql.Date"/>
+	<field name="FORCPF" class="java.lang.String"/>
+	<field name="FORRG" class="java.lang.String"/>
+	<field name="FORCNPJ" class="java.lang.String"/>
+	<field name="FORIE" class="java.lang.String"/>
+	<field name="FOROE" class="java.lang.String"/>
+	<field name="TIPOFOR" class="java.lang.Integer"/>
+	<field name="FORCONTATO" class="java.lang.String"/>
+	<field name="FORSTATUS" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="98" y="10" width="402" height="69"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="24"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE FORNECEDORES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FONOME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="36" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="351" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FORTEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="0" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[TELEFONE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="75" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FORENDERECO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="65" height="20"/>
+				<textElement/>
+				<text><![CDATA[ENDEREÇO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="329" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FORBAIRRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="20" width="48" height="20"/>
+				<textElement/>
+				<text><![CDATA[BAIRRO:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="39" width="555" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

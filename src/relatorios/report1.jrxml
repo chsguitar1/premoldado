@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\cristiano\\Documents\\NetBeansProjects\\premoldados\\src\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    F1.FONOME,
+    C3.CIDNOME,
+    E1.ESTNOME,
+    C2.COMDATA,
+    C2.COMTOTAL,
+    C2.PECOMCOD,
+c2.comcod
+FROM
+    FORNECEDOR F1,
+    CIDADE C3,
+    ESTADO E1,
+    COMPRA C2,
+    PEDCOMPRA P1
+WHERE
+    E1.ESTCOD = C3.ESTCOD AND
+    C3.CIDCOD = F1.CIDCOD AND
+    F1.FORCOD = P1.FORCOD AND
+    P1.PECOMCOD = C2.PECOMCOD and
+    c2.comcod = $P{codigo}]]>
+	</queryString>
+	<field name="FONOME" class="java.lang.String"/>
+	<field name="CIDNOME" class="java.lang.String"/>
+	<field name="ESTNOME" class="java.lang.String"/>
+	<field name="COMDATA" class="java.sql.Date"/>
+	<field name="COMTOTAL" class="java.math.BigDecimal"/>
+	<field name="PECOMCOD" class="java.lang.Integer"/>
+	<field name="COMCOD" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[FONOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[CIDNOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[COMCOD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{FONOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CIDNOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{COMCOD}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="25" width="555" height="100"/>
+				<subreportParameter name="codigo">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report1_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
